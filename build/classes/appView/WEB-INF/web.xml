@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app 
+   xmlns="http://java.sun.com/xml/ns/j2ee" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" 
+   version="2.4"> 
+   
+  <display-name>JETTY Server</display-name>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/dump/ERROR</location>
+  </error-page>
+<!--  Instance ServiceAPP -->
+	
+<!--  Hessian servlet -->
+  <servlet>
+   <servlet-name>rpc</servlet-name>
+   <servlet-class>com.caucho.hessian.server.HessianServlet</servlet-class>
+    <init-param>
+      <param-name>home-class</param-name>
+      <param-value>controler.Database</param-value>
+    </init-param>
+   
+    <init-param>
+      <param-name>home-class</param-name>
+      <param-value>controler.IDatabase</param-value>
+    </init-param>
+   
+   <!-- <init-param>
+      <param-name>home-class</param-name>
+      <param-value>classe.database</param-value>
+    </init-param>
+   
+    <init-param>
+      <param-name>home-api</param-name>
+      <param-value>classe.Idatabase</param-value>
+    </init-param> -->
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>rpc</servlet-name>
+    <url-pattern>/rpc</url-pattern>
+  </servlet-mapping>
+</web-app>
+
+
